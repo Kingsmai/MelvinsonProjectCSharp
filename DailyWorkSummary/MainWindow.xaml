@@ -1,0 +1,93 @@
+﻿<Window x:Class="DailyWorkSummary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:DailyWorkSummary"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="Daily Summary 每日总结 V1.0.3_20210705"
+        Width="1100"
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="201*" />
+            <ColumnDefinition Width="68*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="800" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  各个输入框（主要总结输入框）  -->
+            <Grid Grid.Column="0">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type RichTextBox}">
+                        <Setter Property="Margin" Value="0,0,0,8" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Summary 日常总结" />
+                <RichTextBox x:Name="Summary" Grid.Row="1" />
+
+                <Label Grid.Row="2" Content="Planning 计划项目" />
+                <RichTextBox x:Name="Planning" Grid.Row="3" />
+
+                <Label Grid.Row="4" Content="Notes 笔记 | This will not output 此内容将不会被导出" />
+                <RichTextBox x:Name="Notes" Grid.Row="5" />
+            </Grid>
+            <Grid Grid.Column="1" />
+        </Grid>
+
+        <!--  系统控制按钮  -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.Resources>
+                <Style x:Key="btn" TargetType="{x:Type Button}">
+                    <Setter Property="Height" Value="24" />
+                    <Setter Property="Padding" Value="32,0,32,0" />
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--  左侧按钮  -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource btn}" TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="0,0,32,0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="save_btn" Content="Save 保存" />
+                <Button x:Name="load_btn" Content="Load 读取" />
+            </StackPanel>
+
+            <!--  右侧按钮  -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource btn}" TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="32,0,0,0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="about_btn" Content="About 关于" />
+                <Button x:Name="close_btn" Content="Close 关闭" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
